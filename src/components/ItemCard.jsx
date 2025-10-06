@@ -1,7 +1,7 @@
 import React from "react";
 import { Draggable } from "@hello-pangea/dnd";
 
-function ItemCard({ item, index }) {
+const ItemCard = ({ item, index }) => {
   return (
     <Draggable draggableId={item.id} index={index}>
       {(provided) => (
@@ -16,6 +16,6 @@ function ItemCard({ item, index }) {
       )}
     </Draggable>
   );
-}
+};
 
 export default ItemCard;
