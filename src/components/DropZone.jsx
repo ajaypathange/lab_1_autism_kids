@@ -2,14 +2,14 @@ import React from "react";
 import { Droppable } from "@hello-pangea/dnd";
 import ItemCard from "./ItemCard";
 
-function DropZone({ id, title, items }) {
+const DropZone = ({ droppableId, title, items }) => {
   return (
-    <div className="drop-zone-container">
-      <h2>{title}</h2>
-      <Droppable droppableId={id}>
+    <div className="dropzone-container">
+      <h3>{title}</h3>
+      <Droppable droppableId={droppableId}>
         {(provided) => (
           <div
-            className="drop-zone"
+            className="dropzone"
             ref={provided.innerRef}
             {...provided.droppableProps}
           >
@@ -22,6 +22,6 @@ function DropZone({ id, title, items }) {
       </Droppable>
     </div>
   );
-}
+};
 
 export default DropZone;
