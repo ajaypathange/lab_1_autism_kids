@@ -1,121 +1,137 @@
-
-* {
-  margin: 0;
+/* App container */
+.App {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #EEAECA, #94BBE9);
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
   padding: 0;
+  margin: 0;
+}
+
+/* Game container */
+.game-container {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 1rem;
   box-sizing: border-box;
 }
 
-body,
-html,
-#root {
-  height: 100%;
+/* Board holding all drop zones */
+.board {
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+  flex-wrap: nowrap;
   width: 100%;
+  align-items: flex-start;
 }
 
-/*  App Container */
-.app {
+/* Each drop zone box */
+.dropzone-container {
+  background: linear-gradient(145deg, #ffffff, #f0f4f8); /* default light gradient */
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 0.5rem;
+  flex: 1;           /* horizontal flexibility */
+  min-width: 200px;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Specific style for "Items to Sort" box */
+.items-to-sort {
+  background: linear-gradient(145deg, #fff8e1, #ffe0e0); /* cream + light pink */
+}
+
+/* Inside drop zone where items are dropped */
+.dropzone {
+  flex-grow: 1;
+  border: 3px dashed #4a90e2;
+  background: linear-gradient(135deg, #f8fafc, #e3f2fd); /* default light gradient */
+  padding: 10px;
+  border-radius: 12px;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start; /* keep content from top */
-  text-align: center;
-  font-family: "Poppins", sans-serif;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #dfefff, #f6f9ff);
-  padding: 30px;
+  justify-content: flex-start;
 }
 
-/*  Headings */
-h1 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-  color: #102a43;
+/* Override for Items to Sort dropzone */
+.items-to-sort .dropzone {
+  background: linear-gradient(135deg, #fff8e1, #ffe0e0);
 }
 
-h3 {
-  font-weight: normal;
-  color: #1a3c66;
-  margin-bottom: 20px;
-}
-
-/*  Zones Layout */
-.zones-container {
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 30px;
-  width: 100%;
-  max-width: 1100px;
-}
-
-/*  Drop Zone Box */
-.drop-zone-container {
-  background: #ffffff;
-  border-radius: 15px;
-  padding: 20px;
-  width: 300px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-  transition: transform 0.2s ease;
-}
-
-.drop-zone-container:hover {
-  transform: translateY(-3px);
-}
-
-.drop-zone-container h2 {
-  color: #102a43;
-  margin-bottom: 15px;
-}
-
-/* Droppable Area */
-.drop-zone {
-  min-height: 250px;
-  background: #eef4ff;
-  border: 2px dashed #007bff;
-  border-radius: 12px;
-  padding: 12px;
-  transition: all 0.3s ease;
-}
-
-/* Draggable Item Card */
+/* Individual draggable item */
 .item-card {
-  background: #fff;
-  border-radius: 8px;
-  margin: 8px 0;
-  padding: 12px;
-  cursor: grab;
-  font-size: 1.2rem;
-  font-weight: 500;
+  background: linear-gradient(135deg, #fff9c4, #ffe082);
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 12px;
+  font-weight: 600;
+  font-size: 1.2rem; /* smaller text for Items to Sort is handled separately */
+  text-align: center;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: grab;
+}
+
+.items-to-sort .item-card {
+  font-size: 1rem; /* smaller words inside Items to Sort */
 }
 
 .item-card:hover {
-  transform: scale(1.05);
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* Score Board */
+/* Scoreboard */
 .score-board {
-  background: #e6f4ff;
-  border: 2px solid #007bff;
-  border-radius: 12px;
-  padding: 10px 20px;
-  margin-bottom: 25px;
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #007bff;
-  display: inline-block;
+  background: linear-gradient(135deg, #ffffff, #e0f7fa);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  width: 400px;
+  margin: auto;
 }
 
-/* 🎉 Success Message */
+/* Messages */
 .success-message {
   color: green;
-  font-size: 1.5rem;
   font-weight: bold;
-  margin-top: 30px;
-  background: #e8ffe8;
-  padding: 12px 25px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 128, 0, 0.1);
+  font-size: 1.2rem;
+}
+
+.try-message {
+  color: red;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* Buttons */
+.reset-btn,
+.next-btn {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  margin-top: 15px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.reset-btn:hover,
+.next-btn:hover {
+  background-color: #0056b3;
 }
